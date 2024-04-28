@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { AuthContext } from "../contexts/AuthProvider";
 
 const AddTouristSpot = () => {
+  const {user}=useContext(AuthContext)
   const {
     register,
     handleSubmit,
@@ -11,7 +14,7 @@ const AddTouristSpot = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    
+
     // Send data to the server
     fetch("http://localhost:5000/tourspots", {
       method: "POST",
@@ -61,14 +64,16 @@ const AddTouristSpot = () => {
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
               <div className="col-span-full sm:col-span-3">
                 <label htmlFor="firstname" className="text-sm">
-                  User Name
+                  Name
                 </label>
                 <input
                   name="userName"
                   type="text"
+                  readOnly
+                  defaultValue={user.displayName}
                   placeholder="Write your name"
                   className="input w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  {...register("userName", { required: true })}
+                  {...register("userName")}
                 />
                 {errors.userName && (
                   <p className="text-red-500 ">This field is required</p>
@@ -81,9 +86,11 @@ const AddTouristSpot = () => {
                 <input
                   name="userEmail"
                   type="email"
+                  readOnly
+                  defaultValue={user.email}
                   placeholder="User Email"
                   className="input w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  {...register("userEmail", { required: true })}
+                  {...register("userEmail")}
                 />
                 {errors.userEmail && (
                   <p className="text-red-500 ">This field is required</p>
@@ -104,17 +111,24 @@ const AddTouristSpot = () => {
                   <p className="text-red-500 ">This field is required</p>
                 )}
               </div>
-              <div className="col-span-full sm:col-span-3">
+              <div className="col-span-full sm:col-span-3 flex flex-col gap-1">
                 <label htmlFor="lastname" className="text-sm">
                   Country
                 </label>
-                <input
-                  name="country"
-                  type="text"
-                  placeholder="Country"
-                  className="input w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                <select
+                  className=" select select-bordered w-full "
                   {...register("country", { required: true })}
-                />
+                >
+                  <option disabled selected>
+                    Select Your Country
+                  </option>
+                  <option>Bangladesh</option>
+                  <option>Thailand</option>
+                  <option>Indonesia</option>
+                  <option>Malaysia</option>
+                  <option>Vietnam</option>
+                  <option>Cambodia</option>
+                </select>
                 {errors.country && (
                   <p className="text-red-500 ">This field is required</p>
                 )}
@@ -208,6 +222,7 @@ const AddTouristSpot = () => {
                   </option>
                   <option>Summer </option>
                   <option>Winter</option>
+                  <option>Any</option>
                 </select>
                 {errors.season && (
                   <p className="text-red-500 ">This field is required</p>

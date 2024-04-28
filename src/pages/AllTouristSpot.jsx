@@ -3,7 +3,7 @@ import SpotCard from "../components/SpotCard";
 
 const AllTouristSpot = () => {
   const allSpots = useLoaderData();
-  console.log(allSpots);
+  
   return (
     <div className="container mx-auto max-w-screen-xl md:my-5 my-3">
       <div>
@@ -13,6 +13,15 @@ const AllTouristSpot = () => {
           You can find all tourist spots which was added by all users
         </p>
         <hr className="md:my-3 my-2 border border-dashed" />
+      </div>
+      <div className="block mx-auto">
+        <select className="block bg-secondary-content mx-auto select select-bordered w-full max-w-xs">
+          <option disabled selected>
+            Sort By
+          </option>
+          <option>Average Cost</option>
+          
+        </select>
       </div>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-3 lg:grid-cols-4 lg:gap-4">
         {allSpots.map((spot) => (
@@ -34,7 +43,7 @@ const AllTouristSpot = () => {
                 <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
                 <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
                 <span className="relative text-black group-hover:text-white">
-                  <Link to="/">Go Home</Link>
+                  <Link to="/addtouristspot">Add Tourist Spot</Link>
                 </span>
               </button>
             </div>

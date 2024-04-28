@@ -4,7 +4,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 const UpdateSpot = () => {
   const spot = useLoaderData();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -106,18 +106,25 @@ const UpdateSpot = () => {
                     })}
                   />
                 </div>
-                <div className="col-span-full sm:col-span-3">
+                <div className="col-span-full sm:col-span-3 flex flex-col gap-1">
                   <label htmlFor="lastname" className="text-sm">
                     Country
                   </label>
-                  <input
-                    name="country"
-                    type="text"
-                    defaultValue={country}
-                    placeholder="Country"
-                    className="input w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                  <select
+                    className=" select select-bordered w-full "
                     {...register("country", { required: true })}
-                  />
+                    defaultValue={country}
+                  >
+                    <option disabled selected>
+                      Select Your Country
+                    </option>
+                    <option>Bangladesh</option>
+                    <option>Thailand</option>
+                    <option>Indonesia</option>
+                    <option>Malaysia</option>
+                    <option>Vietnam</option>
+                    <option>Cambodia</option>
+                  </select>
                   {errors.country && (
                     <p className="text-red-500 ">This field is required</p>
                   )}

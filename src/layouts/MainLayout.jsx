@@ -16,7 +16,7 @@ const MainLayout = () => {
 
       <Outlet></Outlet>
 
-      <div className="bg-base-300">
+      <div className="bg-[#131313]">
         <Footer></Footer>
       </div>
     </div>

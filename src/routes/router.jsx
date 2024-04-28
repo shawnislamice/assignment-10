@@ -12,6 +12,7 @@ import UpdateSpot from "../pages/UpdateSpot";
 
 import Profile from "../pages/Profile";
 import Gallery from "../pages/Gallery";
+import PlanYourTravel from "../pages/PlanYourTravel";
 
 const router = createBrowserRouter([
   {
@@ -90,6 +91,9 @@ const router = createBrowserRouter([
       {
         path:'/gallery',
         element:<Gallery></Gallery>
+      },{
+        path:'/planyourtravel',
+        element:<PlanYourTravel></PlanYourTravel>
       }
     ],
   },

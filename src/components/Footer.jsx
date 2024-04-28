@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <div>
-      <footer className="container mx-auto max-w-screen-xl px-4 divide-y dark:bg-gray-100 dark:text-gray-800">
+    <div className="md:mt-5 mt-3">
+      <footer className="container mx-auto max-w-screen-xl px-4 divide-y text-white">
         <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
           <div className="lg:w-1/3">
             <a
@@ -20,7 +20,7 @@ const Footer = () => {
                 </svg>
               </div>
               <span className="self-center text-2xl font-semibold">
-                Brand name
+                Prebon<span className="text-red-500">Travels</span>
               </span>
             </a>
           </div>
@@ -141,7 +141,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="py-6 text-sm text-center dark:text-gray-600">
-          © 1968 Company Co. All rights reserved.
+          © PrebonTravels Co. All rights reserved.
         </div>
       </footer>
     </div>

@@ -18,7 +18,7 @@ const SpotCard = ({ spot }) => {
 
   return (
     <div className="">
-      <div className="md:h-[650px] hover:scale-95 duration-300  max-w-xs p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900">
+      <div className="md:h-[600px] hover:scale-95 duration-300  md:max-w-xs p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900">
         <img
           src={photo}
           alt=""

@@ -62,71 +62,99 @@ const MyList = () => {
         }
       });
   };
-  
+
   return (
     <div className="container mx-auto max-w-screen-xl md:mt-5">
       <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
-        <h2 className="mb-4 text-2xl font-semibold leading-tight">Invoices</h2>
+        <h2 className="mb-4 text-2xl font-semibold leading-tight text-center">
+          Tourist Spots Of{" "}
+          <span className="text-primary">{user.displayName}</span>
+        </h2>
         <div className="overflow-x-auto">
-          <table className="min-w-full text-xs">
-            <colgroup>
-              <col />
-              <col />
-              <col />
-              <col />
-              <col />
-              <col className="w-24" />
-            </colgroup>
-            <thead className="dark:bg-gray-300">
-              <tr className="text-left">
-                <th className="p-3">User ID</th>
-                <th className="p-3">User Email</th>
-                <th className="p-3">Spot Name</th>
-                <th className="p-3">Country</th>
-                <th className="p-3 text-right">Average Cost</th>
+          {remaining.length > 0 && (
+            <table className="min-w-full text-xs">
+              <colgroup>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col className="w-24" />
+              </colgroup>
+              <thead className="dark:bg-gray-300">
+                <tr className="text-left">
+                  <th className="p-3">User ID</th>
+                  <th className="p-3">User Email</th>
+                  <th className="p-3">Spot Name</th>
+                  <th className="p-3">Country</th>
+                  <th className="p-3 text-right">Average Cost</th>
 
-                <th className="p-3">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {remaining.map((item) => (
-                <tr
-                  key={item._id}
-                  className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50"
-                >
-                  <td className="p-3">
-                    <p>{item._id}</p>
-                  </td>
-                  <td className="p-3">
-                    <p>{item.userEmail}</p>
-                  </td>
-                  <td className="p-3">
-                    <p className="dark:text-gray-600">{item.touristSpotName}</p>
-                  </td>
-                  <td className="p-3">
-                    <p className="dark:text-gray-600">{item.country}</p>
-                  </td>
-                  <td className="p-3 text-right">
-                    <p>{item.averageCost}$</p>
-                  </td>
-                  <td className="p-3 text-right flex flex-col items-center justify-center gap-2">
-                    <Link to={`/updatespot/${item._id}`}>
-                      <button className="btn btn-primary font-semibold">
-                        Update
-                      </button>
-                    </Link>
-                    <button
-                      onClick={() => handleDelete(item._id)}
-                      className="btn btn-secondary font-semibold"
-                    >
-                      Delete
-                    </button>
-                  </td>
+                  <th className="p-3">Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {remaining.map((item) => (
+                  <tr
+                    key={item._id}
+                    className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50"
+                  >
+                    <td className="p-3">
+                      <p>{item._id}</p>
+                    </td>
+                    <td className="p-3">
+                      <p>{item.userEmail}</p>
+                    </td>
+                    <td className="p-3">
+                      <p className="dark:text-gray-600">
+                        {item.touristSpotName}
+                      </p>
+                    </td>
+                    <td className="p-3">
+                      <p className="dark:text-gray-600">{item.country}</p>
+                    </td>
+                    <td className="p-3 text-right">
+                      <p>{item.averageCost}$</p>
+                    </td>
+                    <td className="p-3 text-right flex flex-col items-center justify-center gap-2">
+                      <Link to={`/updatespot/${item._id}`}>
+                        <button className="btn btn-primary font-semibold">
+                          Update
+                        </button>
+                      </Link>
+                      <button
+                        onClick={() => handleDelete(item._id)}
+                        className="btn btn-secondary font-semibold"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
+        {remaining.length == 0 && (
+          <div>
+            <p className="text-red-600 font-bold text-center text-2xl">
+              There has no Data of any Tourist Spots Of Particular User{" "}
+            </p>
+            <div className="flex justify-center items-center md:my-3">
+              <div>
+                <button
+                  href="#_"
+                  className=" relative inline-block px-4 py-2 font-medium group"
+                >
+                  <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+                  <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
+                  <span className="relative text-black group-hover:text-white">
+                    <Link to="/addtouristspot">Add Tourist Spot</Link>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
