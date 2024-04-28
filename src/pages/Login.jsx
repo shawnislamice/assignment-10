@@ -17,7 +17,7 @@ const Login = () => {
     console.log(data);
     const { email, password } = data;
     signIn(email, password)
-      .then((result) => console.log(result.user))
+      .then((result) => {console.log(result.user);})
       .catch((error) => console.log(error.message));
   };
   const navigate = useNavigate();
@@ -26,6 +26,18 @@ const Login = () => {
     signInWithGoogle()
       .then((result) => {
         console.log(result.user);
+        const createdAtt = result.user?.metadata?.creationTime;
+        const lastSignInTimee = result.user?.metadata?.lastSignInTime;
+        const user={...result.user,createdAtt,lastSignInTimee}
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
         navigate(location?.state || "/");
       })
       .catch((error) => {

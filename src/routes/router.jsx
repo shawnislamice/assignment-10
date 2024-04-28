@@ -9,7 +9,9 @@ import AllTouristSpot from "../pages/AllTouristSpot";
 import PrivateRoute from "./PrivateRoute";
 import SpotDetails from "../pages/SpotDetails";
 import UpdateSpot from "../pages/UpdateSpot";
-import Spinner from "../components/Spinner";
+
+import Profile from "../pages/Profile";
+import Gallery from "../pages/Gallery";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch("http://localhost:5000/tourspots"),
       },
       {
         path: "/login",
@@ -75,6 +78,19 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/tourspots/${params.id}`),
       },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("http://localhost:5000/users"),
+      },
+      {
+        path:'/gallery',
+        element:<Gallery></Gallery>
+      }
     ],
   },
 ]);

@@ -1,9 +1,10 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import Swal from "sweetalert2";
 const UpdateSpot = () => {
   const spot = useLoaderData();
-  const [updatedData, setUpdatedData] = useState([]);
+  const navigate=useNavigate()
   const {
     register,
     handleSubmit,
@@ -24,10 +25,60 @@ const UpdateSpot = () => {
     totalTravellers,
   } = spot;
   const onSubmit = (data) => {
-    
-   console.log(data);
+    handleUpdate(data);
   };
-
+  const handleUpdate = (data) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You want to update this information !",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Update It",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:5000/tourspots/${_id}`, {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.modifiedCount > 0) {
+                navigate("/alltouristspot");
+                swalWithBootstrapButtons.fire({
+                  title: "Updated!",
+                  text: "Your selected travel spot has been updated succesfully.",
+                  icon: "success",
+                });
+              }
+            });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelled",
+            text: "Your imaginary file is safe :)",
+            icon: "error",
+          });
+        }
+      });
+    console.log(data);
+  };
   return (
     <div className="container mx-auto max-w-screen-xl">
       <div>
@@ -196,7 +247,7 @@ const UpdateSpot = () => {
             <div className="flex justify-center md:pb-5 pb-3">
               <button
                 type="submit"
-                onClick={()=>onSubmit()}
+                onClick={handleUpdate}
                 className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-indigo-600 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group"
               >
                 <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-indigo-600 group-hover:h-full"></span>

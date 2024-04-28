@@ -104,6 +104,18 @@ const NavBar = () => {
                 My List
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "border duration-200 border-[#F7424F]  outline-none bg-transparent "
+                    : "border-none outline-none "
+                }
+                to="/gallery"
+              >
+                Gallery
+              </NavLink>
+            </li>
           </ul>
         </div>
         <div

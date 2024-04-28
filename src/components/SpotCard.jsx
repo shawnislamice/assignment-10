@@ -18,7 +18,7 @@ const SpotCard = ({ spot }) => {
 
   return (
     <div className="">
-      <div className="hover:scale-95 duration-300  max-w-xs p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900">
+      <div className="md:h-[650px] hover:scale-95 duration-300  max-w-xs p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900">
         <img
           src={photo}
           alt=""
@@ -26,20 +26,20 @@ const SpotCard = ({ spot }) => {
         />
         <div className="mt-6 mb-2 space-y-2">
           <span className="block text-xs font-medium tracking-widest uppercase dark:text-violet-600">
-            {country}
+            Country: {country}
           </span>
           <h2 className="text-xl font-semibold tracking-wide">
             {touristSpotName}
           </h2>
           <p>
-            <b>Average Costs:</b> {averageCost} $ 
+            <b>Average Costs:</b> {averageCost} $
           </p>
           <p>
             <b>Visitors:</b>
             {totalTravellers}
           </p>
           <p>
-            <b>Travel Time:</b> {travelTime} 
+            <b>Travel Time:</b> {travelTime}
           </p>
           <p>
             <b>Season:</b> {season}

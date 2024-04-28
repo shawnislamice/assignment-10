@@ -43,13 +43,13 @@ const AddTouristSpot = () => {
       });
   };
   return (
-    <div>
-      <section className="p-6 shadow-xl rounded-xl dark:bg-gray-100 dark:text-gray-900">
+    <div className="bg-base-200 rounded-lg md:my-5 my-3 container mx-auto max-w-screen-xl">
+      <section className="p-6  rounded-xl dark:bg-gray-100 dark:text-gray-900">
         <form
           onSubmit={handleSubmit(onSubmit)}
           noValidate=""
           action=""
-          className="shadow-xl container flex flex-col mx-auto space-y-12"
+          className=" container flex flex-col mx-auto space-y-12"
         >
           <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-50">
             <div className="space-y-2 col-span-full lg:col-span-1">

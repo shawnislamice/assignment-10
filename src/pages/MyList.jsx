@@ -1,13 +1,16 @@
 import { useContext } from "react";
-import { Navigate, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import Swal from "sweetalert2";
+import AllTouristSpot from "./AllTouristSpot";
 
 const MyList = () => {
   const spots = useLoaderData();
   const { user } = useContext(AuthContext);
   const email = user.email;
+
   const remaining = spots.filter((spot) => spot.userEmail == email);
+
   const navigate = useNavigate();
   const handleDelete = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -59,6 +62,7 @@ const MyList = () => {
         }
       });
   };
+  
   return (
     <div className="container mx-auto max-w-screen-xl md:mt-5">
       <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
@@ -106,9 +110,11 @@ const MyList = () => {
                     <p>{item.averageCost}$</p>
                   </td>
                   <td className="p-3 text-right flex flex-col items-center justify-center gap-2">
-                    <button className="btn btn-primary font-semibold">
-                      Update
-                    </button>
+                    <Link to={`/updatespot/${item._id}`}>
+                      <button className="btn btn-primary font-semibold">
+                        Update
+                      </button>
+                    </Link>
                     <button
                       onClick={() => handleDelete(item._id)}
                       className="btn btn-secondary font-semibold"
