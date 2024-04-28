@@ -8,7 +8,7 @@ const Home = () => {
   const spots = useLoaderData();
   return (
     <div>
-      <div className="text-white home h-[500px] md:h-screen flex flex-col justify-center items-center space-y-4">
+      <div className="text-white home h-[500px] lg:h-screen flex flex-col justify-center items-center space-y-4">
         <h1 className="font-bold md:text-5xl text-3xl ">
           Your Journey Your Story
         </h1>
@@ -35,7 +35,7 @@ const Home = () => {
           us.
         </p>
         <hr className="my-2 max-w-6xl mx-auto border border-dashed" />
-        <div className="md:mt-5 mt-3 grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-5 lg:grid-cols-4 lg:gap-6">
+        <div className="md:mt-5 md:place-items-center mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {spots.map((spot) => (
             <SpotCard key={spot._id} spot={spot}></SpotCard>
           ))}

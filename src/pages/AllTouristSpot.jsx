@@ -23,7 +23,7 @@ const AllTouristSpot = () => {
           
         </select>
       </div>
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-3 lg:grid-cols-4 lg:gap-4">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:place-items-center lg:grid-cols-4 lg:gap-4">
         {allSpots.map((spot) => (
           <SpotCard key={spot._id} spot={spot}></SpotCard>
         ))}

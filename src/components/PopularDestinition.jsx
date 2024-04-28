@@ -10,8 +10,8 @@ const PopularDestinition = () => {
         <p className="text-center opacity-90 md:pt-2">Some popular destination where our travellers already visited</p>
         <hr className="my-2 max-w-6xl mx-auto border border-dashed" />
         <div>
-          <div className="flex md:flex-row flex-col-reverse justify-between items-center md:my-5 md:gap-5">
-            <p className='md:w-1/2 text-justify py-5 md:py-0'>
+          <div className="flex lg:flex-row flex-col-reverse justify-between items-center md:my-5 md:gap-5">
+            <p className='lg:w-1/2 md:max-w-2xl text-justify py-5 lg:py-0'>
               Nestled in the delta of the Ganges, Brahmaputra, and Meghna
               rivers, the Sundarbans is the largest mangrove forest in the world
               and a UNESCO World Heritage Site. Home to the elusive Bengal tiger
@@ -26,13 +26,13 @@ const PopularDestinition = () => {
               and beachside picnics while soaking in the breathtaking coastal
               views.
             </p>
-            <div className='md:w-1/2 flex md:flex-row flex-col gap-5 '>
-                <img className='hover:scale-105 duration-300 md:h-[350px] md:w-[300px] rounded-lg shadow-xl md:relative top-8'  src={popular1} alt="" />
+            <div className='lg:w-1/2 flex md:flex-row md:justify-center flex-col gap-5 '>
+                <img className='hover:scale-105 duration-300 md:h-[350px] md:w-[300px] rounded-lg shadow-xl lg:relative top-8'  src={popular1} alt="" />
                 <img className='hover:scale-105 duration-300 md:h-[350px] md:w-[300px] rounded-lg shadow-xl ' src={popular2} alt="" />
             </div>
           </div>
-          <div className="flex md:flex-row-reverse flex-col-reverse  justify-between items-center md:mt-20 md:gap-5 md:mb-4">
-            <p className='md:w-1/2 text-justify py-5 md:py-0'>
+          <div className="flex lg:flex-row-reverse flex-col-reverse  justify-between items-center lg:mt-20 md:gap-5 md:mb-4">
+            <p className='lg:w-1/2 text-justify py-5 md:py-0 md:max-w-2xl'>
               Nestled in the delta of the Ganges, Brahmaputra, and Meghna
               rivers, the Sundarbans is the largest mangrove forest in the world
               and a UNESCO World Heritage Site. Home to the elusive Bengal tiger
@@ -47,8 +47,8 @@ const PopularDestinition = () => {
               and beachside picnics while soaking in the breathtaking coastal
               views.
             </p>
-            <div className='md:w-1/2 flex md:flex-row flex-col gap-5 '>
-                <img className='hover:scale-105 duration-300 md:h-[350px] md:w-[300px] rounded-lg shadow-xl md:relative top-8'  src={popular3} alt="" />
+            <div className='md:w-1/2 flex md:flex-row md:justify-center flex-col gap-5 '>
+                <img className='hover:scale-105 duration-300 md:h-[350px] md:w-[300px] rounded-lg shadow-xl lg:relative top-8'  src={popular3} alt="" />
                 <img className='hover:scale-105 duration-300 md:h-[350px] md:w-[300px] rounded-lg shadow-xl ' src={popular4} alt="" />
             </div>
           </div>
