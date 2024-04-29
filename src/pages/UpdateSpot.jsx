@@ -2,6 +2,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 const UpdateSpot = () => {
   const spot = useLoaderData();
   const navigate = useNavigate();
@@ -81,6 +82,9 @@ const UpdateSpot = () => {
   };
   return (
     <div className="container mx-auto max-w-screen-xl">
+      <Helmet>
+        <title>Update {touristSpotName}</title>
+      </Helmet>
       <div>
         <section className="  rounded-xl dark:bg-gray-100 dark:text-gray-900">
           <form

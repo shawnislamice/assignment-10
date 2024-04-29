@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import SpotCard from "../components/SpotCard";
 import { Typewriter } from "react-simple-typewriter";
+import { Helmet } from "react-helmet-async";
 
 const AllTouristSpot = () => {
   const allSpots = useLoaderData();
@@ -12,7 +13,10 @@ const AllTouristSpot = () => {
         <h1 className="text-2xl font-bold text-center">
           {" "}
           <Typewriter
-            words={["All Tourist Spot", "You Can Easily Find All Tourist Spots Here"]}
+            words={[
+              "All Tourist Spot",
+              "You Can Easily Find All Tourist Spots Here",
+            ]}
             loop={true}
             cursor
             cursorStyle="_"
@@ -42,6 +46,9 @@ const AllTouristSpot = () => {
 
       {allSpots.length == 0 && (
         <div>
+          <Helmet>
+            <title>All Tourist Spot</title>
+          </Helmet>
           <p className="text-red-600 font-bold text-center text-2xl">
             There has Data of any Tourist spots{" "}
           </p>

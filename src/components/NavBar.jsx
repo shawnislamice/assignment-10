@@ -202,6 +202,12 @@ const NavBar = () => {
                 <li className="btn btn-sm btn-ghost w-full">
                   <Link to="/gallery">Gallery</Link>
                 </li>
+                <li className="btn btn-sm btn-ghost w-full">
+                  <Link to="/countries">Country</Link>
+                </li>
+                <li className="btn btn-sm btn-ghost w-full">
+                  <Link to="/addcountry">Add Country</Link>
+                </li>
 
                 <li>
                   <button

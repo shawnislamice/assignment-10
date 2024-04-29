@@ -4,6 +4,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 const SpotDetails = () => {
   const spot = useLoaderData();
   const {
@@ -83,6 +84,9 @@ const navigate=useNavigate()
   };
   return (
     <div className="md:my-5 my-3 container mx-auto max-w-screen-xl flex md:flex-row flex-col justify-between items-center">
+      <Helmet>
+        <title>{touristSpotName}</title>
+      </Helmet>
       <div>
         <img
           src={photo}

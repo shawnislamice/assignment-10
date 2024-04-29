@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import error from "../assets/404.gif";
+import { Helmet } from "react-helmet-async";
 const ErrorPage = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
+      <Helmet>
+        <title>Ops! Error</title>
+      </Helmet>
       <h3 className="font-bold text-4xl text-center">
         Ops! Your Requested Content Was Not Found
       </h3>

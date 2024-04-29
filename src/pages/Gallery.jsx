@@ -9,9 +9,13 @@ import gallery8 from '../assets/gallery8.jpg'
 import gallery9 from '../assets/gallery9.jpg'
 import gallery10 from '../assets/gallery10.jpg'
 import { Typewriter } from 'react-simple-typewriter'
+import { Helmet } from 'react-helmet-async'
 const Gallery = () => {
     return (
       <div className="container mx-auto max-w-screen-xl">
+        <Helmet>
+          <title>Gallery</title>
+        </Helmet>
         <section className="py-6 dark:bg-gray-100 dark:text-gray-900">
           <hr className="my-2 max-w-6xl mx-auto border border-dashed" />
           <h2 className="text-center md:text-3xl font-bold">

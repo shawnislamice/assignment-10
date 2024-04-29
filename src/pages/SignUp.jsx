@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
   const { createUser } = useContext(AuthContext);
@@ -45,6 +46,9 @@ const SignUp = () => {
   };
   return (
     <div className="bg-[#FBFBFB] rounded-lg shadow-xl py-3 md:py-6 md:my-5 flex md:flex-row justify-around items-center gap-3 md:gap-6">
+      <Helmet>
+        <title>Sign Up Now!</title>
+      </Helmet>
       <div className="md:w-[40%]">
         <div className=" p-8 space-y-3 rounded-xl dark:bg-gray-50 dark:text-gray-800">
           <h1 className="text-2xl font-bold text-center">Sign Up Now</h1>

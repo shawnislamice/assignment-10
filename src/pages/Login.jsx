@@ -3,6 +3,7 @@ import banner from "../assets/login-page.gif";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { signIn, signInWithGoogle, signInWithGitHub, signInWithTwitter } =
@@ -89,6 +90,9 @@ const Login = () => {
   };
   return (
     <div className="bg-[#FBFBFB] rounded-xl shadow-lg md:mt-5  flex md:flex-row flex-col justify-around gap-4 md:gap-6 items-center ">
+      <Helmet>
+        <title>Login Now</title>
+      </Helmet>
       <div>
         <img className="object-cover" src={banner} alt="" />
       </div>

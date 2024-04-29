@@ -35,7 +35,7 @@ const SpotCard = ({ spot }) => {
             <b>Average Costs:</b> {averageCost} $
           </p>
           <p>
-            <b>Visitors:</b>
+            <b>Visitors: </b>
             {totalTravellers}
           </p>
           <p>

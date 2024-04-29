@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { CiSearch } from "react-icons/ci";
 import { Typewriter } from "react-simple-typewriter";
 
@@ -17,6 +18,9 @@ const PlanYourTravel = () => {
         />
       </h2>
       <section className="p-6 dark:bg-gray-100 dark:text-gray-900">
+        <Helmet>
+          <title>Plan Your Travel</title>
+        </Helmet>
         <form
           noValidate=""
           action=""

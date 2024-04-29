@@ -4,6 +4,7 @@ import { AuthContext } from "../contexts/AuthProvider";
 import { CiLineHeight } from "react-icons/ci";
 import { MdVerified } from "react-icons/md";
 import { Typewriter } from "react-simple-typewriter";
+import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
   const users = useLoaderData();
@@ -12,6 +13,9 @@ const Profile = () => {
   console.log(myUser);
   return (
     <section className="p-6  text-gray-500">
+      <Helmet>
+        <title>Profile: {user?.displayName}</title>
+      </Helmet>
       <h3
         data-aos="fade-down"
         data-aos-delay="400"

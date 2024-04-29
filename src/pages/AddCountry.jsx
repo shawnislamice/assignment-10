@@ -4,8 +4,8 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../contexts/AuthProvider";
 import { Helmet } from "react-helmet-async";
 
-const AddTouristSpot = () => {
-  const {user}=useContext(AuthContext)
+const Country = () => {
+  const { user } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -17,7 +17,7 @@ const AddTouristSpot = () => {
     console.log(data);
 
     // Send data to the server
-    fetch("http://localhost:5000/tourspots", {
+    fetch("http://localhost:5000/country", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -28,7 +28,7 @@ const AddTouristSpot = () => {
       .then((data) => {
         console.log(data);
         Swal.fire({
-          title: "Do you want to add the tourist spot?",
+          title: "Do you want to add Country?",
           showDenyButton: true,
           showCancelButton: true,
           confirmButtonText: "Save",
@@ -49,7 +49,7 @@ const AddTouristSpot = () => {
   return (
     <div className="bg-base-200 rounded-lg md:my-5 my-3 container mx-auto max-w-screen-xl">
       <Helmet>
-        <title>Add Tourist Spot</title>
+        <title>Add Country</title>
       </Helmet>
       <section className="p-6  rounded-xl dark:bg-gray-100 dark:text-gray-900">
         <form
@@ -60,9 +60,9 @@ const AddTouristSpot = () => {
         >
           <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-50">
             <div className="space-y-2 col-span-full lg:col-span-1">
-              <p className="font-medium">Add Your Tourist Spot</p>
+              <p className="font-medium">Add Your Country</p>
               <p className="text-xs">
-                Please fill out the form below to add your tourist spot.
+                Please fill out the form below to add your country.
               </p>
             </div>
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
@@ -102,68 +102,32 @@ const AddTouristSpot = () => {
               </div>
               <div className="col-span-full sm:col-span-3">
                 <label htmlFor="firstname" className="text-sm">
-                  Tourist Spot Name
+                  Country Name
                 </label>
                 <input
-                  name="touristSpotName"
+                  name="countryName"
                   type="text"
-                  placeholder="Where you want to go ?"
+                  placeholder="Enter your country name ?"
                   className="input w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  {...register("touristSpotName", { required: true })}
+                  {...register("countryName", { required: true })}
                 />
-                {errors.touristSpotName && (
+                {errors.countryName && (
                   <p className="text-red-500 ">This field is required</p>
                 )}
               </div>
-              <div className="col-span-full sm:col-span-3 flex flex-col gap-1">
-                <label htmlFor="lastname" className="text-sm">
-                  Country
-                </label>
-                <select
-                  className=" select select-bordered w-full "
-                  {...register("country", { required: true })}
-                >
-                  <option disabled selected>
-                    Select Your Country
-                  </option>
-                  <option>Bangladesh</option>
-                  <option>Thailand</option>
-                  <option>Indonesia</option>
-                  <option>Malaysia</option>
-                  <option>Vietnam</option>
-                  <option>Cambodia</option>
-                </select>
-                {errors.country && (
-                  <p className="text-red-500 ">This field is required</p>
-                )}
-              </div>
+
               <div className="col-span-full sm:col-span-3">
                 <label htmlFor="firstname" className="text-sm">
-                  Location
+                  Image
                 </label>
                 <input
-                  name="location"
+                  name="image"
                   type="text"
-                  placeholder="Enter your location where you want to go"
+                  placeholder="Enter your country image"
                   className="input w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  {...register("location", { required: true })}
+                  {...register("image", { required: true })}
                 />
                 {errors.location && (
-                  <p className="text-red-500 ">This field is required</p>
-                )}
-              </div>
-              <div className="col-span-full sm:col-span-3">
-                <label htmlFor="lastname" className="text-sm">
-                  Photo
-                </label>
-                <input
-                  name="photo"
-                  type="text"
-                  placeholder="Enter your Photo URL"
-                  className="input w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  {...register("photo", { required: true })}
-                />
-                {errors.photo && (
                   <p className="text-red-500 ">This field is required</p>
                 )}
               </div>
@@ -179,71 +143,6 @@ const AddTouristSpot = () => {
                   {...register("shortDescription", { required: true })}
                 ></textarea>
                 {errors.shortDescription && (
-                  <p className="text-red-500 ">This field is required</p>
-                )}
-              </div>
-              <div className="col-span-full">
-                <label htmlFor="address" className="text-sm">
-                  Total Travelers Per Year
-                </label>
-                <input
-                  type="text"
-                  placeholder="Total Travelers Per Year"
-                  name="totalTravelers"
-                  className="input w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  {...register("totalTravellers", { required: true })}
-                />
-                {errors.totalTravellers && (
-                  <p className="text-red-500 ">This field is required</p>
-                )}
-              </div>
-              <div className="col-span-full sm:col-span-2">
-                <label htmlFor="city" className="text-sm">
-                  Average Cost
-                </label>
-                <input
-                  id="city"
-                  type="text"
-                  placeholder="Write about your budget"
-                  className="input w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  {...register("averageCost", { required: true })}
-                />
-                {errors.averageCost && (
-                  <p className="text-red-500 ">This field is required</p>
-                )}
-              </div>
-              <div className="col-span-full sm:col-span-2">
-                <label htmlFor="city" className="text-sm">
-                  Which season you prefer
-                </label>
-                <select
-                  name="season"
-                  className="select select-bordered w-full max-w-xs"
-                  {...register("season", { required: true })}
-                >
-                  <option disabled selected>
-                    Seasonaility
-                  </option>
-                  <option>Summer </option>
-                  <option>Winter</option>
-                  <option>Any</option>
-                </select>
-                {errors.season && (
-                  <p className="text-red-500 ">This field is required</p>
-                )}
-              </div>
-              <div className="col-span-full sm:col-span-2">
-                <label htmlFor="zip" className="text-sm">
-                  Travel Time
-                </label>
-                <input
-                  name="travelTime"
-                  type="text"
-                  placeholder="Travel Time like 7 days"
-                  className="input w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  {...register("travelTime", { required: true })}
-                />
-                {errors.travelTime && (
                   <p className="text-red-500 ">This field is required</p>
                 )}
               </div>
@@ -288,7 +187,7 @@ const AddTouristSpot = () => {
                 </svg>
               </span>
               <span className="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white">
-                Add Spot
+                Add Country
               </span>
             </button>
           </div>
@@ -298,4 +197,4 @@ const AddTouristSpot = () => {
   );
 };
 
-export default AddTouristSpot;
+export default Country;

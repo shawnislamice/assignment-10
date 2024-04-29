@@ -4,13 +4,29 @@ import PopularDestinition from "../components/PopularDestinition";
 import "./styles/Home.css";
 import SpotCard from "../components/SpotCard";
 import Slider from "../components/Slider";
-import Demo from "../components/Demo";
 import { Typewriter } from "react-simple-typewriter";
 import Reveal, { Slide } from "react-awesome-reveal";
+import Countries from "../components/Countries";
+import { useEffect, useState } from "react";
+import CountryCard from "../components/CountryCard";
+import { Helmet } from "react-helmet-async";
+import Reviews from "../components/Reviews";
+import Offer from "../components/Offer";
 const Home = () => {
+  const [countries,setCountries]=useState([])
+  useEffect(()=>{
+    fetch("http://localhost:5000/country")
+      .then((res) => res.json())
+      .then((data) => {
+        setCountries(data);
+      });
+  },[])
   const spots = useLoaderData();
   return (
     <div>
+      <Helmet>
+        <title>Home: Prebon Travels</title>
+      </Helmet>
       <div className="text-white home h-[500px] lg:h-screen flex flex-col justify-center items-center space-y-4">
         <h1 className="font-bold md:text-5xl text-3xl ">
           <Typewriter
@@ -45,7 +61,16 @@ const Home = () => {
       <div className="md:my-10 my-5 container mx-auto max-w-screen-xl">
         <hr className="my-2 max-w-6xl mx-auto border border-dashed" />
         <h2 className="text-center md:text-3xl font-bold text-xl">
-          Tourist Spots
+          {" "}
+          <Typewriter
+            words={["Tourist Spots", "Find Your Dream Spots Here"]}
+            loop={true}
+            cursor
+            cursorStyle="_"
+            typeSpeed={100}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
         </h2>
         <p className="text-center opacity-90 md:pt-2">
           Some popular tourist spots where you can go , share your story with
@@ -80,6 +105,35 @@ const Home = () => {
         )}
       </div>
       <Slider></Slider>
+      {/* Countries */}
+      <div className="md:my-8 my-4">
+        <hr className="my-2 max-w-6xl mx-auto border border-dashed" />
+        <h2 className="text-center md:text-3xl font-bold text-xl">
+          {" "}
+          <Typewriter
+            words={["Countries", "All Countries We Covered"]}
+            loop={true}
+            cursor
+            cursorStyle="_"
+            typeSpeed={100}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
+        </h2>
+        <p className="text-center opacity-90 md:pt-2 md:max-w-xl mx-auto">
+          We Covered All This Countries For Our Customers. We Choose Best Places
+          For Our Beloved Customers
+        </p>
+        <hr className="my-2 max-w-6xl mx-auto border border-dashed" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-5 gap-4 place-items-center container mx-auto max-w-screen-xl md:my-5">
+          {countries.map((country) => (
+            <CountryCard key={country._id} country={country}></CountryCard>
+          ))}
+        </div>
+      </div>
+      {/* Countries */}
+      <Offer></Offer>
+      <Reviews></Reviews>
     </div>
   );
 };

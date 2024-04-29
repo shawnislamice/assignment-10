@@ -14,6 +14,9 @@ import Profile from "../pages/Profile";
 import Gallery from "../pages/Gallery";
 import PlanYourTravel from "../pages/PlanYourTravel";
 import ErrorPage from "../pages/ErrorPage";
+import AddCountry from "../pages/AddCountry";
+import Countries from "../components/Countries";
+import FilterCountries from "../pages/FilterCountries";
 
 const router = createBrowserRouter([
   {
@@ -99,6 +102,33 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <PlanYourTravel></PlanYourTravel>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/countries",
+        element: (
+          <PrivateRoute>
+            <Countries></Countries>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("http://localhost:5000/country"),
+      },
+      {
+        path: "/countries/:id",
+        element: (
+          <PrivateRoute>
+            <FilterCountries></FilterCountries>
+          </PrivateRoute>
+        ),
+        loader: ({params}) =>
+          fetch(`http://localhost:5000/country/${params.id}`),
+      },
+      {
+        path: "/addcountry",
+        element: (
+          <PrivateRoute>
+            <AddCountry></AddCountry>
           </PrivateRoute>
         ),
       },
