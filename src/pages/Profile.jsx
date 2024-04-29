@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import { CiLineHeight } from "react-icons/ci";
 import { MdVerified } from "react-icons/md";
 import { Typewriter } from "react-simple-typewriter";
 import { Helmet } from "react-helmet-async";
+import UpdateProfile from "../components/UpdateProfile";
 
 const Profile = () => {
   const users = useLoaderData();
@@ -174,6 +175,7 @@ const Profile = () => {
         data-aos-anchor-placement="top"
         className="flex justify-center md:mt-4 mt-3"
       ></div>
+     <UpdateProfile></UpdateProfile>
     </section>
   );
 };

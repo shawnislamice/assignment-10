@@ -17,6 +17,7 @@ import ErrorPage from "../pages/ErrorPage";
 import AddCountry from "../pages/AddCountry";
 import Countries from "../components/Countries";
 import FilterCountries from "../pages/FilterCountries";
+import UpdateProfile from "../components/UpdateProfile";
 
 const router = createBrowserRouter([
   {
@@ -121,7 +122,7 @@ const router = createBrowserRouter([
             <FilterCountries></FilterCountries>
           </PrivateRoute>
         ),
-        loader: ({params}) =>
+        loader: ({ params }) =>
           fetch(`http://localhost:5000/country/${params.id}`),
       },
       {
@@ -132,6 +133,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      
     ],
   },
 ]);

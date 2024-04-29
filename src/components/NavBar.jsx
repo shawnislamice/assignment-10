@@ -160,7 +160,7 @@ const NavBar = () => {
 
               {/* sun icon */}
               <svg
-                className="swap-off fill-current w-10 h-8 mt-[6px]"
+                className="swap-off fill-current w-8 h-6 mt-[9px]"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
               >
