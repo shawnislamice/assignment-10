@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 import SpotCard from "../components/SpotCard";
+import { Typewriter } from "react-simple-typewriter";
 
 const AllTouristSpot = () => {
   const allSpots = useLoaderData();
@@ -8,7 +9,18 @@ const AllTouristSpot = () => {
     <div className="container mx-auto max-w-screen-xl md:my-5 my-3">
       <div>
         <hr className="md:my-3 my-2 border border-dashed" />
-        <h1 className="text-2xl font-bold text-center">All Tourist Spots</h1>
+        <h1 className="text-2xl font-bold text-center">
+          {" "}
+          <Typewriter
+            words={["All Tourist Spot", "You Can Easily Find All Tourist Spots Here"]}
+            loop={true}
+            cursor
+            cursorStyle="_"
+            typeSpeed={100}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
+        </h1>
         <p className="max-w-md block mx-auto opacity-90  text-center md:pt-2">
           You can find all tourist spots which was added by all users
         </p>
@@ -20,7 +32,6 @@ const AllTouristSpot = () => {
             Sort By
           </option>
           <option>Average Cost</option>
-          
         </select>
       </div>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:place-items-center lg:grid-cols-4 lg:gap-4">

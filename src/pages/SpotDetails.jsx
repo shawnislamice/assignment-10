@@ -151,7 +151,6 @@ const navigate=useNavigate()
             </span>
             <span className="pl-4 pr-5 py-2.5 font-semibold">Delete</span>
           </button>
-          {/* You can open the modal using document.getElementById('ID').showModal() method */}
         </div>
       </div>
     </div>

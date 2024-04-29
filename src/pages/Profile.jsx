@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import { CiLineHeight } from "react-icons/ci";
 import { MdVerified } from "react-icons/md";
+import { Typewriter } from "react-simple-typewriter";
 
 const Profile = () => {
   const users = useLoaderData();
@@ -16,7 +17,16 @@ const Profile = () => {
         data-aos-delay="400"
         className="text-3xl text-center font-semibold"
       >
-        Your Profile
+        {" "}
+        <Typewriter
+          words={["Your Profile", "Find Your Information There"]}
+          loop={true}
+          cursor
+          cursorStyle="_"
+          typeSpeed={100}
+          deleteSpeed={50}
+          delaySpeed={1000}
+        />
       </h3>
       <form
         noValidate=""

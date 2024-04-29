@@ -13,11 +13,13 @@ import UpdateSpot from "../pages/UpdateSpot";
 import Profile from "../pages/Profile";
 import Gallery from "../pages/Gallery";
 import PlanYourTravel from "../pages/PlanYourTravel";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -89,12 +91,17 @@ const router = createBrowserRouter([
         loader: () => fetch("http://localhost:5000/users"),
       },
       {
-        path:'/gallery',
-        element:<Gallery></Gallery>
-      },{
-        path:'/planyourtravel',
-        element:<PlanYourTravel></PlanYourTravel>
-      }
+        path: "/gallery",
+        element: <Gallery></Gallery>,
+      },
+      {
+        path: "/planyourtravel",
+        element: (
+          <PrivateRoute>
+            <PlanYourTravel></PlanYourTravel>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);

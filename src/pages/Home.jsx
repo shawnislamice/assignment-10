@@ -4,17 +4,32 @@ import PopularDestinition from "../components/PopularDestinition";
 import "./styles/Home.css";
 import SpotCard from "../components/SpotCard";
 import Slider from "../components/Slider";
+import Demo from "../components/Demo";
+import { Typewriter } from "react-simple-typewriter";
+import Reveal, { Slide } from "react-awesome-reveal";
 const Home = () => {
   const spots = useLoaderData();
   return (
     <div>
       <div className="text-white home h-[500px] lg:h-screen flex flex-col justify-center items-center space-y-4">
         <h1 className="font-bold md:text-5xl text-3xl ">
-          Your Journey Your Story
+          <Typewriter
+            words={["Your Journey Your Story", "Adventure is worthwhile."]}
+            loop={true}
+            cursor
+            cursorStyle="_"
+            typeSpeed={100}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
         </h1>
-        <p className="text-2xl font-semibold ">
-          Your Gateway to <span className="text-[#F7424F]">Adventure</span>
-        </p>
+        <Reveal>
+          <Slide direction="up">
+            <p className="text-2xl font-semibold ">
+              Your Gateway to <span className="text-[#F7424F]">Adventure</span>
+            </p>
+          </Slide>
+        </Reveal>
         <p className="max-w-xl opacity-80 text-center">
           Discover the breathtaking landscapes and vibrant cultures of
           destinations around the globe with ExploreWorld. Whether you seek the
@@ -29,7 +44,9 @@ const Home = () => {
       <PopularDestinition></PopularDestinition>
       <div className="md:my-10 my-5 container mx-auto max-w-screen-xl">
         <hr className="my-2 max-w-6xl mx-auto border border-dashed" />
-        <h2 className="text-center md:text-3xl font-bold text-xl">Tourist Spots</h2>
+        <h2 className="text-center md:text-3xl font-bold text-xl">
+          Tourist Spots
+        </h2>
         <p className="text-center opacity-90 md:pt-2">
           Some popular tourist spots where you can go , share your story with
           us.

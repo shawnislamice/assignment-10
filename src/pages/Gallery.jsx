@@ -8,12 +8,24 @@ import gallery7 from '../assets/gallery7.jpg'
 import gallery8 from '../assets/gallery8.jpg'
 import gallery9 from '../assets/gallery9.jpg'
 import gallery10 from '../assets/gallery10.jpg'
+import { Typewriter } from 'react-simple-typewriter'
 const Gallery = () => {
     return (
       <div className="container mx-auto max-w-screen-xl">
         <section className="py-6 dark:bg-gray-100 dark:text-gray-900">
           <hr className="my-2 max-w-6xl mx-auto border border-dashed" />
-          <h2 className="text-center md:text-3xl font-bold">Gallery</h2>
+          <h2 className="text-center md:text-3xl font-bold">
+            {" "}
+            <Typewriter
+              words={["Gallery", "Find Our Happy Travellers On Gallery"]}
+              loop={true}
+              cursor
+              cursorStyle="_"
+              typeSpeed={100}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          </h2>
           <p className="text-center opacity-90 md:pt-2 md:max-w-2xl mx-auto">
             Welcome to our gallery! Explore a stunning collection of images
             showcasing our latest projects, products, and events. From

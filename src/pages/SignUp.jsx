@@ -150,7 +150,7 @@ const SignUp = () => {
           </form>
         </div>
       </div>
-      <div className="bg-[#F7424F] h-[calc(100vh-200px)] w-1/2 rounded-lg shadow-lg flex flex-col justify-center items-center md:space-y-4 space-y-2">
+      <div className="bg-[#F7424F] h-[calc(100vh-200px)] w-1/2 rounded-lg shadow-lg hidden md:flex flex-col justify-center items-center md:space-y-4 space-y-2">
         <h1 className="text-5xl font-bold ">
           Hi, <span className="text-primary">There</span>
         </h1>

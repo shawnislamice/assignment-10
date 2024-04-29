@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link, Navigate, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import Swal from "sweetalert2";
-import AllTouristSpot from "./AllTouristSpot";
+import { Typewriter } from "react-simple-typewriter";
 
 const MyList = () => {
   const spots = useLoaderData();
@@ -67,7 +67,17 @@ const MyList = () => {
     <div className="container mx-auto max-w-screen-xl md:mt-5">
       <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
         <h2 className="mb-4 text-2xl font-semibold leading-tight text-center">
-          Tourist Spots Of{" "}
+          {" "}
+          <Typewriter
+            words={["Tourist Spot Of"]}
+            loop={true}
+            cursor
+            cursorStyle="_"
+            typeSpeed={100}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
+          
           <span className="text-primary">{user.displayName}</span>
         </h2>
         <div className="overflow-x-auto">
