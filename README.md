@@ -3,10 +3,13 @@
 Welcome to My Awesome Website! Visit the live site [here](https://real-state-assignment.web.app/).
 
 
-Welcome to your one-stop shop for finding your dream property! At PrebonBuilders, we understand the excitement and challenges of embarking on a real estate journey. Whether you're a first-time buyer seeking your perfect starter home, or a seasoned investor searching for the next big opportunity, we're here to empower your search. Our user-friendly platform offers a comprehensive selection of listings across various property types, locations, and budgets. Dive in and explore a world of possibilities -  your new chapter awaits!
+
+Welcome to Prebon Travels - your ultimate destination for discovering your dream getaway! At Prebon Travel, we understand the thrill and excitement of embarking on a travel adventure. Whether you're a first-time traveler seeking your perfect vacation spot or a seasoned explorer in search of your next unforgettable journey, we're here to empower your exploration.
+
+Our user-friendly platform offers a comprehensive selection of travel destinations across the globe, catering to various interests, preferences, and budgets. From exotic beach resorts and vibrant city escapes to serene countryside retreats and adrenaline-fueled adventures, Prebon Travel has something for every traveler.
 
 ## Website Structure
-- **NavBar:** In the NavBar Website name and routes are placed. There are six routes and at the right sight of the NavBar when user was not logged in there was a signin and signup option was present, when user logged in user image was shown when clicking on user image then some options was shown: User Name, Your Profile, Cart, Favourites and Logout
+- **NavBar:** In the NavBar Website name and routes are placed. There are six routes and at the right sight of the NavBar when user was not logged in there was a signin and signup option was present, when user logged in user image was shown when clicking on user image then some options was shown: User Name, Your Profile, My List, Gallery, Country, Add Country and Logout
 
 - **Body:** You can see the main contents and features in the body.
 
@@ -15,21 +18,23 @@ Welcome to your one-stop shop for finding your dream property! At PrebonBuilders
 ## Public Routes
 
 - **Home**
-- **Estate**
-- **About**
+- **Gallery**
+
 
 ## Private Routes
 
+- **Plan Your Travel**
+- **All Tourist Spot**
+- **Add Tourist Spot**
+- **My List**
+- **Country**
+- **Add Country**
 - **Profile**
-- **Update Profile**
-- **Cart**
-- **Contact**
-- **Favourites**
 
 
 ## Packages
 
-- **Aos**
+
 - **Firebase**
 - **Localforage**
 - **Match-sorter**
@@ -39,18 +44,16 @@ Welcome to your one-stop shop for finding your dream property! At PrebonBuilders
 - **React-hook-form**
 - **React-hot-toast**
 - **React-icons**
-- **React-leaflet**
 - **React-rating-stars-component**
 - **React-router-dom**
 - **React-spinners**
-- **Swiper**
+- **React Simple Type Writter**
+- **React Awesome Reveal**
 
 ## Challenge Requirement Used Packages
 
-- **React AOS**
-- **React Leaflet**
-- **React Hook Form**
-- **Swiper Slider**
+- **React Simple Type Writter**
+- **React Awesome Reveal**
 
 
 ## Characteristics
@@ -66,25 +69,31 @@ Welcome to your one-stop shop for finding your dream property! At PrebonBuilders
 
 - **Sign In:** If you have account then you can sign in easily. There was options to login with google, github and twitter. You can easily login directly with this platforms
 
-- **Show Details of Each Property:** When click on each propety card then it will redirect to property details page show the details of each property such as name, segment, price, facilities, suitable for, location, status,description etc
+- **All Tourist Spot:** Here all the spot was present which was added by different users.
 
-- **Add to Cart:** After viewing the propety you can add it to cart for viewing later. It was stored for sometimes in the localstorage of your browser.
+- **Add Tourist Spot:** User can add tourist spot by using this route and it can be displayed on his My List and All Tourist Spot.
 
-- **Your Profile:** After login you will redirect to your profile and you can see your profile
+- **Show Details of Each Tourist Spot:** When click on "View Details" button on each tourist spot card then it will redirect to tourist spot details page show the details of each spot such as name, username,useremail ,country, location, season, location, travel time,travllers per year, average cost etc
+
+- **My List:** Here a particular user see only his particular addeded spots not see all spots of other users.
+
+- **Update:** When you are in the spot details page there was a "Update" button where you can update information. User can also update it from his list if he was added the spot either not.
+
+- **Delete:** When you are in the spot details page there was a "Delete" button where you can directly delete the tourist spot. The same thing you can do from My List If the dedicated user was added the route
+
+- **Your Profile:** After login  you can see your profile
 
 - **Update Profile:** You can update profile as need like name and your photo email can not be updated because when creating account the email will be fixed it can not be changed.
 
-- **Favourites:** When you are adding items in cart then you can add a particular cart into favourites.
+- **Gallery:** Some photos was displayed in the gallery section.
 
-- **Remove Items From Cart:** If you dont need any card then you can easily remove the cart by clicking remove in the cart menu.
-
-- **Limited Buy and Sell:** You can not buy up to two property at a time. When you click Continue to checkout then it was redirect to Payment page and then redirect to home page. 
+- **Plan Your Travel:** User can plan his travel as he want and find location as he or she need.
 
 - **Contact:** User can easily contact with admins by logging. As it is a private route so you can not make any contact without Logging in.  
 
-- **About:** A simple about section was added where some Frequently Asked Question was added and a simple about section was added about our website.
+- **Country:** User can see all countries where he or she can visit. In there when click particular Country card It will seen the particular spots which was under the selected country.
 
-- **Make A Review:** User can make a review in the bottom of the about section.
+- **Add Country:** User can add country and see it on the country route.  
 
 - **Logout:** User can logout by clicking logout Button.
 
