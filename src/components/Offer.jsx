@@ -6,6 +6,7 @@ const Offer = () => {
         <section className="py-6 dark:bg-gray-100 dark:text-gray-900">
           <div className="container mx-auto p-4 sm:p-10">
             <div className="mb-16 space-y-4 text-center">
+              <hr className="my-2 max-w-6xl mx-auto border border-dashed" />
               <h1 className="text-4xl font-semibold leading-tight">
                 <Typewriter
                   words={[
@@ -23,6 +24,7 @@ const Offer = () => {
               <p className="px-4 sm:px-8 lg:px-24">
                 Some Popular Offers We Have Only For Our Beloved Customers
               </p>
+              <hr className="my-2 max-w-6xl mx-auto border border-dashed" />
               <div className="join join-vertical lg:join-horizontal">
                 <button className="btn join-item bg-[#378CE7]">Weekly</button>
                 <button className="btn join-item bg-[#4CCD99]">Monthly</button>

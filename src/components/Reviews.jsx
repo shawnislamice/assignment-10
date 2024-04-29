@@ -12,6 +12,7 @@ const Reviews = () => {
     console.log(reviews);
     return (
       <div className="container mx-auto max-w-screen-xl md:my-10 my-5">
+        <hr className="my-2 max-w-6xl mx-auto border border-dashed" />
         <h2 className="font-bold text-center md:text-3xl">
           <Typewriter
             words={["Reviews", "Our Happy Customers"]}
@@ -23,10 +24,12 @@ const Reviews = () => {
             delaySpeed={1000}
           />
         </h2>
+        <p className="text-center my-2">Our Happy Customers Shred Their Opinion With Us</p>
+        <hr className="my-2 max-w-6xl mx-auto border border-dashed" />
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:grid-4 lg:grid-cols-3 place-items-center lg:gap-6">
-            {
-                reviews.map(review=><ReviewCard key={review.index} review={review}></ReviewCard>)
-            }
+          {reviews.map((review) => (
+            <ReviewCard key={review.index} review={review}></ReviewCard>
+          ))}
         </div>
       </div>
     );

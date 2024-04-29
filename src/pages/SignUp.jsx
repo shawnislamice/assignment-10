@@ -1,15 +1,22 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import { Helmet } from "react-helmet-async";
-
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
+import { IoMdEyeOff } from "react-icons/io";
+import { IoEye } from "react-icons/io5";
 const SignUp = () => {
   const { createUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+  const uppercaseRegex = /[A-Z]/;
+  const lowercaseRegex = /[a-z]/;
+  const [toggle, setToggle] = useState(false);
   const {
     register,
     handleSubmit,
@@ -19,7 +26,26 @@ const SignUp = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    const { username, email, password, photo } = data;
+    const { username, email, password, photo, confirmPassword } = data;
+    if (
+      password.length < 6 ||
+      !uppercaseRegex.test(password) ||
+      !lowercaseRegex.test(password)
+    ) {
+      setError(
+        "Password should be at least 6 character with a uppercase and lowercase letter"
+      );
+      return;
+    }
+    if (password !== confirmPassword) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password and Confirm Password Dont Match",
+      });
+      return;
+    }
+
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
@@ -28,10 +54,11 @@ const SignUp = () => {
           displayName: username,
           photoURL: photo,
         });
+
         navigate(location?.state || "/");
         window.location.reload();
         const createdAt = result.user?.metadata?.creationTime;
-        const user = { email, password,createdAt };
+        const user = { email, password, createdAt };
         fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {
@@ -40,9 +67,15 @@ const SignUp = () => {
           body: JSON.stringify(user),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) => {
+            console.log(data);
+            toast.success(`Login Successful! Welcome ${user?.displayName}`);
+          });
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        console.log(error.message);
+        toast.error(`registration Failed! ${error.message}`);
+      });
   };
   return (
     <div className="bg-[#FBFBFB] rounded-lg shadow-xl py-3 md:py-6 md:my-5 flex md:flex-row justify-around items-center gap-3 md:gap-6">
@@ -110,35 +143,58 @@ const SignUp = () => {
                 </p>
               )}
             </div>
-            <div className="space-y-1 text-sm">
+            <div className="space-y-1 text-sm relative">
               <label htmlFor="password" className="block dark:text-gray-600">
                 Password
               </label>
               <input
-                type="password"
+                type={toggle ? "text" : "password"}
                 name="password"
                 id="password"
                 placeholder="Password"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
                 {...register("password", { required: true })}
               />
+              <p
+                className="absolute right-3 top-8"
+                onClick={() => setToggle(!toggle)}
+              >
+                {toggle ? (
+                  <IoEye size={20}></IoEye>
+                ) : (
+                  <IoMdEyeOff size={20}></IoMdEyeOff>
+                )}
+              </p>
               {errors.password && (
                 <p className="text-red-500 dark:text-red-400">
                   This field is required
                 </p>
               )}
+              {error && (
+                <span className="text-red-500 font-semibold">{error}</span>
+              )}
             </div>
-            <div className="space-y-1 text-sm">
+            <div className="space-y-1 text-sm relative">
               <label htmlFor="password" className="block dark:text-gray-600">
                 Confirm Password
               </label>
               <input
-                type="password"
+                type={toggle ? "text" : "password"}
                 name="confirmPassword"
                 placeholder="Confirm Password"
-                className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+                className="w-full  px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
                 {...register("confirmPassword", { required: true })}
               />
+              <p
+                className="absolute right-3 top-8"
+                onClick={() => setToggle(!toggle)}
+              >
+                {toggle ? (
+                  <IoEye size={20}></IoEye>
+                ) : (
+                  <IoMdEyeOff size={20}></IoMdEyeOff>
+                )}
+              </p>
               {errors.confirmPassword && (
                 <p className="text-red-500 dark:text-red-400">
                   This field is required

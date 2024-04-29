@@ -2,6 +2,7 @@ import { Outlet, useNavigation } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Spinner from "../components/Spinner";
+import  { Toaster } from "react-hot-toast";
 
 const MainLayout = () => {
   const navigation = useNavigation();
@@ -19,6 +20,7 @@ const MainLayout = () => {
       <div className="bg-[#131313]">
         <Footer></Footer>
       </div>
+      <Toaster />
     </div>
   );
 };
