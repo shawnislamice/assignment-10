@@ -2,10 +2,22 @@ import { Link, useLoaderData } from "react-router-dom";
 import SpotCard from "../components/SpotCard";
 import { Typewriter } from "react-simple-typewriter";
 import { Helmet } from "react-helmet-async";
+import { useState } from "react";
 
 const AllTouristSpot = () => {
   const allSpots = useLoaderData();
-  
+  const [sortData,setSortData]=useState(allSpots)
+  const handleSort = (e) => {
+    const sortValue = e.target.value;
+    console.log(sortValue);
+    if(sortValue=="Average Cost"){
+     const sortedSports=[...sortData].sort((a,b)=>b.averageCost-a.averageCost)
+     setSortData(sortedSports)
+    }
+    //  if (selectedSortBy === "Rating") {
+    //   const sortedBooks = [...books].sort((a, b) => b.rating - a.rating);
+    //   setBooks(sortedBooks);
+  };
   return (
     <div className="container mx-auto max-w-screen-xl md:my-5 my-3">
       <div>
@@ -31,7 +43,10 @@ const AllTouristSpot = () => {
         <hr className="md:my-3 my-2 border border-dashed" />
       </div>
       <div className="block mx-auto">
-        <select className="block bg-secondary-content mx-auto select select-bordered w-full max-w-xs">
+        <select
+          onChange={handleSort}
+          className="block bg-secondary-content mx-auto select select-bordered w-full max-w-xs"
+        >
           <option disabled selected>
             Sort By
           </option>
@@ -39,7 +54,7 @@ const AllTouristSpot = () => {
         </select>
       </div>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:place-items-center lg:grid-cols-4 lg:gap-4">
-        {allSpots.map((spot) => (
+        {sortData.map((spot) => (
           <SpotCard key={spot._id} spot={spot}></SpotCard>
         ))}
       </div>
