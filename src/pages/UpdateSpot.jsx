@@ -48,13 +48,16 @@ const UpdateSpot = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/tourspots/${_id}`, {
-            method: "PUT",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(data),
-          })
+          fetch(
+            `https://assignment-10-server-sable-five.vercel.app/tourspots/${_id}`,
+            {
+              method: "PUT",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(data),
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               console.log(data);

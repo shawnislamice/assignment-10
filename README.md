@@ -1,6 +1,6 @@
 # PrebonTravels
 
-Welcome to My Awesome Website! Visit the live site [here](https://real-state-assignment.web.app/).
+Welcome to My Awesome Website! Visit the live site [here](https://assignment-10-prebon-travels.web.app/).
 
 
 
@@ -99,8 +99,8 @@ Our user-friendly platform offers a comprehensive selection of travel destinatio
 
 
 
-Live Link 1: [Click Here](https://real-state-assignment.web.app/)
-Live Link 2: [Click Here](https://shawnislam-ice-assignment-9.netlify.app/)
+Client Side: [Click Here](https://assignment-10-prebon-travels.web.app/)
+Server Side: [Click Here](https://assignment-10-server-sable-five.vercel.app/)
 
 I will constantly trying to improving and expanding our website to better serve you. Feel free to reach out with any feedback or suggestions!
 

@@ -31,7 +31,7 @@ const SpotDetails = () => {
   const onSubmit = (data) => {
     console.log(data);
   };
-const navigate=useNavigate()
+  const navigate = useNavigate();
   const handleDelete = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -52,17 +52,20 @@ const navigate=useNavigate()
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/tourspots/${id}`, {
-            method: "DELETE",
-            headers: {
-              "content-type": "application/json",
-            },
-          })
+          fetch(
+            `https://assignment-10-server-sable-five.vercel.app/tourspots/${id}`,
+            {
+              method: "DELETE",
+              headers: {
+                "content-type": "application/json",
+              },
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               console.log(data);
               if (data.deletedCount > 0) {
-                navigate("/alltouristspot")
+                navigate("/alltouristspot");
                 swalWithBootstrapButtons.fire({
                   title: "Deleted!",
                   text: "Your selected travel spot has been deleted.",

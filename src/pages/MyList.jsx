@@ -33,12 +33,15 @@ const MyList = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/tourspots/${id}`, {
-            method: "DELETE",
-            headers: {
-              "content-type": "application/json",
-            },
-          })
+          fetch(
+            `https://assignment-10-server-sable-five.vercel.app/tourspots/${id}`,
+            {
+              method: "DELETE",
+              headers: {
+                "content-type": "application/json",
+              },
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               console.log(data);

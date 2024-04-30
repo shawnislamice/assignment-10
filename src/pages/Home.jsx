@@ -13,15 +13,16 @@ import { Helmet } from "react-helmet-async";
 import Reviews from "../components/Reviews";
 import Offer from "../components/Offer";
 const Home = () => {
-  const [countries,setCountries]=useState([])
-  useEffect(()=>{
-    fetch("http://localhost:5000/country")
+  const [countries, setCountries] = useState([]);
+  useEffect(() => {
+    fetch("https://assignment-10-server-sable-five.vercel.app/country")
       .then((res) => res.json())
       .then((data) => {
         setCountries(data);
       });
-  },[])
+  }, []);
   const spots = useLoaderData();
+  
   return (
     <div>
       <Helmet>

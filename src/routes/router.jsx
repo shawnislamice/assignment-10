@@ -28,7 +28,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/tourspots"),
+        loader: () =>
+          fetch("https://assignment-10-server-sable-five.vercel.app/tourspots"),
       },
       {
         path: "/login",
@@ -46,7 +47,8 @@ const router = createBrowserRouter([
             <MyList></MyList>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/tourspots"),
+        loader: () =>
+          fetch("https://assignment-10-server-sable-five.vercel.app/tourspots"),
       },
       {
         path: "/addtouristspot",
@@ -63,7 +65,8 @@ const router = createBrowserRouter([
             <AllTouristSpot></AllTouristSpot>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/tourspots"),
+        loader: () =>
+          fetch("https://assignment-10-server-sable-five.vercel.app/tourspots"),
       },
       {
         path: "/alltouristspot/:id",
@@ -73,7 +76,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/tourspots/${params.id}`),
+          fetch(
+            `https://assignment-10-server-sable-five.vercel.app/tourspots/${params.id}`
+          ),
       },
       {
         path: "/updatespot/:id",
@@ -83,7 +88,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/tourspots/${params.id}`),
+          fetch(
+            `https://assignment-10-server-sable-five.vercel.app/tourspots/${params.id}`
+          ),
       },
       {
         path: "/profile",
@@ -92,7 +99,8 @@ const router = createBrowserRouter([
             <Profile></Profile>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/users"),
+        loader: () =>
+          fetch("https://assignment-10-server-sable-five.vercel.app/users"),
       },
       {
         path: "/gallery",
@@ -113,7 +121,8 @@ const router = createBrowserRouter([
             <Countries></Countries>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/country"),
+        loader: () =>
+          fetch("https://assignment-10-server-sable-five.vercel.app/country"),
       },
       {
         path: "/countries/:id",
@@ -123,7 +132,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/country/${params.id}`),
+          fetch(
+            `https://assignment-10-server-sable-five.vercel.app/country/${params.id}`
+          ),
       },
       {
         path: "/addcountry",
@@ -133,7 +144,16 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      
+      {
+        path: "/updateprofile",
+        element: (
+          <PrivateRoute>
+            <UpdateProfile></UpdateProfile>
+          </PrivateRoute>
+        ),
+        loader: () =>
+          fetch("https://assignment-10-server-sable-five.vercel.app/users"),
+      },
     ],
   },
 ]);

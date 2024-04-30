@@ -3,6 +3,7 @@ import SpotCard from "../components/SpotCard";
 import { Typewriter } from "react-simple-typewriter";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const AllTouristSpot = () => {
   const allSpots = useLoaderData();
@@ -13,6 +14,7 @@ const AllTouristSpot = () => {
     if(sortValue=="Average Cost"){
      const sortedSports=[...sortData].sort((a,b)=>b.averageCost-a.averageCost)
      setSortData(sortedSports)
+     toast.success(`Sotred By ${sortValue}`)
     }
     //  if (selectedSortBy === "Rating") {
     //   const sortedBooks = [...books].sort((a, b) => b.rating - a.rating);

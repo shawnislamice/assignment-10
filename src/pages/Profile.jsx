@@ -175,7 +175,9 @@ const Profile = () => {
         data-aos-anchor-placement="top"
         className="flex justify-center md:mt-4 mt-3"
       ></div>
-     <UpdateProfile></UpdateProfile>
+      <Link to="/updateprofile">
+        <button className="btn btn-secondary block mx-auto">Update Profile</button>
+      </Link>
     </section>
   );
 };

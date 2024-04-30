@@ -59,7 +59,7 @@ const SignUp = () => {
         window.location.reload();
         const createdAt = result.user?.metadata?.creationTime;
         const user = { email, password, createdAt };
-        fetch("http://localhost:5000/users", {
+        fetch("https://assignment-10-server-sable-five.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

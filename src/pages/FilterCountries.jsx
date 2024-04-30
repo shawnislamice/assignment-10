@@ -11,11 +11,11 @@ const FilterCountries = () => {
     country;
 
   useEffect(() => {
-    fetch("http://localhost:5000/tourspots")
+    fetch("https://assignment-10-server-sable-five.vercel.app/tourspots")
       .then((res) => res.json())
       .then((data) => setAllSpots(data));
   }, []);
-  const filteredSpots=allSPots.filter(spot=>spot.country==countryName)
+  const filteredSpots = allSPots.filter((spot) => spot.country == countryName);
   console.log(filteredSpots);
   return (
     <div className="container mx-auto max-w-screen-xl md:my-5 my-3">

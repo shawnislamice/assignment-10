@@ -17,7 +17,7 @@ const Country = () => {
     console.log(data);
 
     // Send data to the server
-    fetch("http://localhost:5000/country", {
+    fetch("https://assignment-10-server-sable-five.vercel.app/country", {
       method: "POST",
       headers: {
         "content-type": "application/json",

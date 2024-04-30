@@ -17,7 +17,7 @@ const AddTouristSpot = () => {
     console.log(data);
 
     // Send data to the server
-    fetch("http://localhost:5000/tourspots", {
+    fetch("https://assignment-10-server-sable-five.vercel.app/tourspots", {
       method: "POST",
       headers: {
         "content-type": "application/json",

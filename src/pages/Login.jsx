@@ -9,7 +9,7 @@ import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
 
 const Login = () => {
-  const [toggle,setToggle]=useState(false)
+  const [toggle, setToggle] = useState(false);
   const {
     signIn,
     signInWithGoogle,
@@ -31,7 +31,7 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         toast.success(`Login Successful! Welcome ${user?.displayName}`);
-         navigate(location?.state || "/");
+        navigate(location?.state || "/");
       })
       .catch((error) => console.log(error.message));
   };
@@ -44,7 +44,7 @@ const Login = () => {
         const createdAtt = result.user?.metadata?.creationTime;
         const lastSignInTimee = result.user?.metadata?.lastSignInTime;
         const user = { ...result.user, createdAtt, lastSignInTimee };
-        fetch("http://localhost:5000/users", {
+        fetch("https://assignment-10-server-sable-five.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -60,7 +60,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.message);
-         toast.error(`Login Failed! ${error.message}`);
+        toast.error(`Login Failed! ${error.message}`);
       });
   };
   const handleGitHubLogin = () => {
@@ -70,7 +70,7 @@ const Login = () => {
         const createdAtt = result.user?.metadata?.creationTime;
         const lastSignInTimee = result.user?.metadata?.lastSignInTime;
         const user = { ...result.user, createdAtt, lastSignInTimee };
-        fetch("http://localhost:5000/users", {
+        fetch("https://assignment-10-server-sable-five.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -86,7 +86,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.message);
-         toast.error(`Login Failed! ${error.message}`);
+        toast.error(`Login Failed! ${error.message}`);
       });
   };
   const handleTwitterLogin = () => {
@@ -96,7 +96,7 @@ const Login = () => {
         const createdAtt = result.user?.metadata?.creationTime;
         const lastSignInTimee = result.user?.metadata?.lastSignInTime;
         const user = { ...result.user, createdAtt, lastSignInTimee };
-        fetch("http://localhost:5000/users", {
+        fetch("https://assignment-10-server-sable-five.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
