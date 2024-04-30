@@ -17,7 +17,7 @@ const PlanYourTravel = () => {
           delaySpeed={1000}
         />
       </h2>
-      <section className="p-6 dark:bg-gray-100 dark:text-gray-900">
+      <section className="p-6 bg-base-200 md:my-5 my-3 rounded-lg dark:bg-gray-100 dark:text-gray-900">
         <Helmet>
           <title>Plan Your Travel</title>
         </Helmet>

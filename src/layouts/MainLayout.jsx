@@ -10,7 +10,7 @@ const MainLayout = () => {
     return <Spinner></Spinner>;
   }
   return (
-    <div>
+    <div className="">
       <div className="container mx-auto max-w-screen-xl">
         <NavBar></NavBar>
       </div>

@@ -1,102 +1,111 @@
-import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
-import { AuthContext } from "../contexts/AuthProvider";
-import { Typewriter } from "react-simple-typewriter";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const UpdateProfile = () => {
-  const users = useLoaderData();
-  const { user } = useContext(AuthContext);
-  const loggedUser = users.find((item) => item.email == user.email);
-  console.log(loggedUser);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const photo = e.target.photo.value;
-    const updatedUser = { name, photo };
-    // updateProfile(auth.currentUser, {
-    //   displayName: name,
-    //   photoURL: photo,
-    // })
-    fetch(
-      `https://assignment-10-server-sable-five.vercel.app/users/${loggedUser._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(updatedUser),
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    const { name, photo } = data;
+    console.log(data);
+
+    Swal.fire({
+      title: "Are you sure you want  to update your profile?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Update it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photo,
+        })
+          .then((result) => {
+            window.location.reload()
+          })
+          .catch();
+        Swal.fire({
+          title: "Updated!",
+          text: "Your information has been updated.",
+          icon: "success",
+        });
       }
-    )
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    });
+
+    navigate(location?.pathname || "/profile");
   };
   return (
-    <div className="container mx-auto max-w-screen-xl md:my-5 my-3">
-      <div>
-        <hr className="md:my-3 my-2 border border-dashed" />
-        <h1 className="text-2xl font-bold text-center">
-          {" "}
-          <Typewriter
-            words={["Update Profile", "You Can Update Your Profile From Here"]}
-            loop={true}
-            cursor
-            cursorStyle="_"
-            typeSpeed={100}
-            deleteSpeed={50}
-            delaySpeed={1000}
-          />
-        </h1>
-        <p className="max-w-md block mx-auto opacity-90  text-center md:pt-2">
-          Update Your Profile from Here
-        </p>
-        <hr className="md:my-3 my-2 border border-dashed" />
-      </div>
-      <div>
-        <section className="bg-[#FDBF60] rounded-lg p-6 dark:bg-gray-100 dark:text-gray-900">
+    <div>
+      {/* You can open the modal using document.getElementById('ID').showModal() method */}
+      <button
+        className="btn font-bold btn-primary block mx-auto"
+        onClick={() => document.getElementById("my_modal_3").showModal()}
+      >
+        Update Profile
+      </button>
+      <dialog id="my_modal_3" className="modal">
+        <div className="modal-box">
           <form
-            onSubmit={handleSubmit}
-            noValidate=""
-            action=""
-            className="container flex flex-col mx-auto space-y-12"
+            onSubmit={handleSubmit(onSubmit)}
+            method="dialog"
+            className="space-y-3"
           >
-            <fieldset className=" place-items-center grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-50">
-              <div className=" grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-                <div className="col-span-full sm:col-span-3">
-                  <label htmlFor="username" className="text-sm">
-                    Name
-                  </label>
-                  <input
-                    id="Name"
-                    name="name"
-                    type="text"
-                    placeholder="Name"
-                    defaultValue={loggedUser?.displayName}
-                    className="input w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  />
-                </div>
-                <div className="col-span-full sm:col-span-3">
-                  <label htmlFor="website" className="text-sm">
-                    Photo
-                  </label>
-                  <input
-                    id="website"
-                    type="text"
-                    name="photo"
-                    placeholder="https://"
-                    defaultValue={loggedUser?.photoURL}
-                    className="input w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  />
-                </div>
-              </div>
-            </fieldset>
-            <button className="block mx-auto btn btn-outline" type="submit">
+            {/* if there is a button in form, it will close the modal */}
+            <button
+              onClick={() => {
+                window.location.reload();
+              }}
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            >
+              ✕
+            </button>
+            <input
+              {...register("name", { required: true })}
+              type="text"
+              className="input bg-base-200 w-[90%] mx-auto block"
+              placeholder="Enter your name"
+              name="name"
+            />
+            {errors.name && (
+              <span className="text-red-500 font-semibold ml-6">
+                Feild is required
+              </span>
+            )}
+
+            <input
+              {...register("photo", { required: true })}
+              type="text"
+              className="input bg-base-200 w-[90%] mx-auto block"
+              placeholder="Enter your photo URL"
+              name="photo"
+            />
+            {errors.photo && (
+              <span className="text-red-500 font-semibold ml-6">
+                Feild is required
+              </span>
+            )}
+
+            <button type="Submit " className="btn btn-secondary mx-auto block">
               Update Now
             </button>
           </form>
-        </section>
-      </div>
+        </div>
+      </dialog>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const Countries = () => {
   const countries = useLoaderData();
   console.log(countries);
   return (
-    <div className="md:my-5 my-3 container mx-auto max-w-screen-xl">
+    <div className=" md:my-5 my-3 container mx-auto max-w-screen-xl">
       <Helmet>
         <title>Countries</title>
       </Helmet>
@@ -29,7 +29,7 @@ const Countries = () => {
         For Our Beloved Customers
       </p>
       <hr className="my-2 max-w-6xl mx-auto border border-dashed" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-5 gap-3 place-items-center">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-5 gap-3 place-items-center">
         {countries.map((country) => (
           <CountryCard key={country._id} country={country}></CountryCard>
         ))}

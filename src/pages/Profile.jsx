@@ -11,7 +11,7 @@ const Profile = () => {
   const users = useLoaderData();
   const { user } = useContext(AuthContext);
   const myUser = users.find((userItem) => userItem.email == user.email);
-  console.log(myUser);
+  console.log(user);
   return (
     <section className="p-6  text-gray-500">
       <Helmet>
@@ -44,7 +44,7 @@ const Profile = () => {
               data-aos="zoom-in"
               data-aos-delay="500"
               className="size-40 rounded-full border-primary shadow-lg border  p-2"
-              src={myUser.photoURL}
+              src={user.photoURL}
               alt=""
             />
             <div className="flex items-center gap-2">
@@ -53,10 +53,10 @@ const Profile = () => {
                 data-aos-delay="500"
                 className="font-medium"
               >
-                {myUser.displayName || "Unknown"}
+                {user.displayName || "Unknown"}
               </p>
               <span data-aos="fade-right" data-aos-delay="500">
-                {myUser?.emailVerified && (
+                {user?.emailVerified && (
                   <MdVerified className="text-blue-400"></MdVerified>
                 )}
               </span>
@@ -81,7 +81,7 @@ const Profile = () => {
               <input
                 type="text"
                 name="firstName"
-                placeholder={myUser.displayName}
+                placeholder={user.displayName}
                 readOnly
                 className="bg-base-300 border-none outline-none input w-full rounded-md focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-violet-400 border-gray-700"
               />
@@ -113,7 +113,7 @@ const Profile = () => {
               <input
                 name="email"
                 type="email"
-                placeholder={myUser.email}
+                placeholder={user.email}
                 readOnly
                 className="bg-base-300 border-none outline-none input w-full rounded-md focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-violet-400 border-gray-700"
               />
@@ -129,7 +129,7 @@ const Profile = () => {
               <input
                 name="address"
                 type="text"
-                placeholder={myUser.photoURL}
+                placeholder={user.photoURL}
                 readOnly
                 className="bg-base-300 border-none outline-none input w-full rounded-md focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-violet-400 border-gray-700"
               />
@@ -175,9 +175,7 @@ const Profile = () => {
         data-aos-anchor-placement="top"
         className="flex justify-center md:mt-4 mt-3"
       ></div>
-      <Link to="/updateprofile">
-        <button className="btn btn-secondary block mx-auto">Update Profile</button>
-      </Link>
+    <UpdateProfile></UpdateProfile>
     </section>
   );
 };

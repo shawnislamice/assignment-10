@@ -4,7 +4,7 @@ import slider3 from '../assets/slider3.avif'
 import slider4 from '../assets/slider4.jpg'
 const Slider = () => {
   return (
-    <div className="container mx-auto max-w-screen-xl md:my-10">
+    <div className="px-4 container mx-auto max-w-screen-xl md:my-10">
       <div className="carousel w-full">
         <div id="slide1" className="carousel-item relative w-full">
           <img

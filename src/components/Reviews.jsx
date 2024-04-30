@@ -11,7 +11,7 @@ const Reviews = () => {
     },[])
     console.log(reviews);
     return (
-      <div className="container mx-auto max-w-screen-xl md:my-10 my-5">
+      <div className="px-4 container mx-auto max-w-screen-xl md:my-10 my-5">
         <hr className="my-2 max-w-6xl mx-auto border border-dashed" />
         <h2 className="font-bold text-center md:text-3xl">
           <Typewriter

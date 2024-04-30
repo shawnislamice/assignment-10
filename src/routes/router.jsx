@@ -144,16 +144,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "/updateprofile",
-        element: (
-          <PrivateRoute>
-            <UpdateProfile></UpdateProfile>
-          </PrivateRoute>
-        ),
-        loader: () =>
-          fetch("https://assignment-10-server-sable-five.vercel.app/users"),
-      },
+      
     ],
   },
 ]);

@@ -5,7 +5,7 @@ import popular4 from '../assets/popular 4.jpg'
 import { Typewriter } from 'react-simple-typewriter';
 const PopularDestinition = () => {
     return (
-      <div className="md:mb-20 md:mt-10 my-3 container mx-auto max-w-screen-xl">
+      <div className="px-4 md:px-0 md:mb-20 md:mt-10 my-3 container mx-auto max-w-screen-xl">
         <hr className="my-2 max-w-6xl mx-auto border border-dashed" />
         <h2 className="text-center text-xl md:text-3xl font-bold">
           {" "}

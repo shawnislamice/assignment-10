@@ -5,7 +5,7 @@ const CountryCard = ({country}) => {
     
     return (
       <Link to={`/countries/${_id}`}>
-        <div className="hover:scale-105 duration-300 md:h-[500px]  p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900">
+        <div className="mx-2 md:mx-0 hover:scale-105 duration-300 md:h-[500px]  p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900">
           <img
             src={image}
             alt=""

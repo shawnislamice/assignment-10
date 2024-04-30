@@ -68,7 +68,7 @@ const MyList = () => {
   };
 
   return (
-    <div className="container mx-auto max-w-screen-xl md:mt-5">
+    <div className="bg-base-200 rounded-lg md:my-5 my-3 container mx-auto max-w-screen-xl md:mt-5">
       <Helmet>
         <title>My List: {user?.displayName}</title>
       </Helmet>
